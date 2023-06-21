@@ -1,0 +1,91 @@
+import { StyleSheet } from "react-native";
+
+export const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        // justifyContent: "flex-end",
+    },
+    bgImage: {
+        flex: 1,
+        justifyContent: "flex-end",
+    },
+    registrationContainer: {
+        position: "relative",
+        borderTopLeftRadius: 25,
+        borderTopRightRadius: 25,
+        paddingLeft: 16,
+        paddingRight: 16,
+        // paddingBottom: 78,
+        paddingTop: 92,
+        height: 549,
+        backgroundColor: "#fff",
+        alignItems: "center",
+    },
+    title: {
+        fontFamily: "Roboto-Medium",
+        fontSize: 30,
+        marginBottom: 33,
+    },
+    photoWrapper: {
+        width: 120,
+        height: 120,
+        borderRadius: 16,
+        backgroundColor: "#F6F6F6",
+        position: "absolute",
+        top: -60,
+    },
+    addIcon: {
+        position: "absolute",
+        right: -12.5,
+        top: 81,
+        width: 25,
+        height: 25,
+    },
+    formWrapper: {
+        width: "100%",
+        gap: 16,
+        marginBottom: 43,
+    },
+    formItem: {
+        backgroundColor: "#F6F6F6",
+        // padding: 16,
+        // width: "100%",
+        border: "1px solid #E8E8E8",
+        borderRadius: 8,
+        fontFamily: "Roboto-Regular",
+    },
+    formInput: {
+        paddingTop: 16,
+        paddingBottom: 15,
+        paddingLeft: 16,
+        paddingRight: 16,
+        width: "100%",
+        position: "relative",
+    },
+    showPasswordBtn: {
+        position: "absolute",
+        fontFamily: "Roboto-Regular",
+        color: "#1B4371",
+        right: 16,
+        bottom: 16,
+    },
+    submitBtn: {
+        backgroundColor: "#FF6C00",
+        borderRadius: 100,
+        width: "100%",
+        height: 51,
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        marginBottom: 16,
+    },
+    submitBtnText: {
+        fontFamily: "Roboto-Regular",
+        color: "#fff",
+        fontSize: 16,
+    },
+    checkBtn: {
+        fontFamily: "Roboto-Regular",
+        color: "#1B4371",
+    },
+});
