@@ -24,8 +24,8 @@ export default function App() {
 
     return (
         <View style={{ flex: 1 }}>
-            {/* <LoginScreen onLayout={onLayoutRootView} /> */}
-            <RegistrationScreen onLayout={onLayoutRootView} />
+            <LoginScreen onLayout={onLayoutRootView} />
+            {/* <RegistrationScreen onLayout={onLayoutRootView} /> */}
             {/* <PostScreen onLayout={onLayoutRootView} /> */}
         </View>
     );

@@ -3,7 +3,6 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
-        // justifyContent: "flex-end",
     },
     bgImage: {
         flex: 1,
@@ -15,7 +14,7 @@ export const styles = StyleSheet.create({
         borderTopRightRadius: 25,
         paddingLeft: 16,
         paddingRight: 16,
-        // paddingBottom: 78,
+        paddingBottom: 78,
         paddingTop: 92,
         height: 549,
         backgroundColor: "#fff",
@@ -46,20 +45,29 @@ export const styles = StyleSheet.create({
         gap: 16,
         marginBottom: 43,
     },
-    formItem: {
-        backgroundColor: "#F6F6F6",
-        // padding: 16,
-        // width: "100%",
-        border: "1px solid #E8E8E8",
-        borderRadius: 8,
-        fontFamily: "Roboto-Regular",
-    },
-    formInput: {
+
+    inputFocused: {
         paddingTop: 16,
         paddingBottom: 15,
         paddingLeft: 16,
         paddingRight: 16,
-        width: "100%",
+        backgroundColor: "#fff",
+        borderWidth: 1,
+        borderColor: "#FF6C00",
+        borderRadius: 8,
+        fontFamily: "Roboto-Regular",
+        position: "relative",
+    },
+    formInput: {
+        backgroundColor: "#F6F6F6",
+        borderWidth: 1,
+        borderColor: "#E8E8E8",
+        borderRadius: 8,
+        fontFamily: "Roboto-Regular",
+        paddingTop: 16,
+        paddingBottom: 15,
+        paddingLeft: 16,
+        paddingRight: 16,
         position: "relative",
     },
     showPasswordBtn: {
