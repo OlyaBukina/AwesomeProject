@@ -30,6 +30,14 @@ export const RegistrationScreen = ({ onLayout }) => {
         Keyboard.dismiss();
     };
 
+    const submitForm = () => {
+        if (state.login === "" || state.email === "" || state.password === "") {
+            return;
+        }
+        console.log(state);
+        setState(initialState);
+    };
+
     return (
         <TouchableWithoutFeedback onPress={keyBordHide}>
             <KeyboardAvoidingView
@@ -74,6 +82,7 @@ export const RegistrationScreen = ({ onLayout }) => {
                                         setinputName("login");
                                         setIsShowKeyboard(true);
                                     }}
+                                    onBlur={() => setIsShowKeyboard(false)}
                                     onChangeText={(value) =>
                                         setState((prevState) => ({
                                             ...prevState,
@@ -94,6 +103,7 @@ export const RegistrationScreen = ({ onLayout }) => {
                                         setinputName("email");
                                         setIsShowKeyboard(true);
                                     }}
+                                    onBlur={() => setIsShowKeyboard(false)}
                                     onChangeText={(value) =>
                                         setState((prevState) => ({
                                             ...prevState,
@@ -115,6 +125,7 @@ export const RegistrationScreen = ({ onLayout }) => {
                                             setinputName("password");
                                             setIsShowKeyboard(true);
                                         }}
+                                        onBlur={() => setIsShowKeyboard(false)}
                                         onChangeText={(value) =>
                                             setState((prevState) => ({
                                                 ...prevState,
@@ -129,7 +140,10 @@ export const RegistrationScreen = ({ onLayout }) => {
                                     </Pressable>
                                 </View>
                             </View>
-                            <Pressable style={styles.submitBtn}>
+                            <Pressable
+                                style={styles.submitBtn}
+                                onPress={submitForm}
+                            >
                                 <Text style={styles.submitBtnText}>
                                     Зареєстуватися
                                 </Text>

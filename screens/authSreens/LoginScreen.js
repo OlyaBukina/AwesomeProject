@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
     ImageBackground,
     View,
@@ -29,6 +29,13 @@ export const LoginScreen = ({ onLayout }) => {
         Keyboard.dismiss();
     };
 
+    const submitForm = () => {
+        if (state.email === "" || state.password === "") {
+            return;
+        }
+        console.log(state);
+        setState(initialState);
+    };
     return (
         <TouchableWithoutFeedback onPress={keyBordHide}>
             <KeyboardAvoidingView
@@ -70,16 +77,19 @@ export const LoginScreen = ({ onLayout }) => {
                                         setinputName("email");
                                         setIsShowKeyboard(true);
                                     }}
+                                    onBlur={() => setIsShowKeyboard(false)}
                                     onChangeText={(value) =>
                                         setState((prevState) => ({
                                             ...prevState,
                                             email: value,
                                         }))
                                     }
+                                    value={state.email}
                                 ></TextInput>
 
                                 <View style={{ position: "relative" }}>
                                     <TextInput
+                                        value={state.password}
                                         style={
                                             inputName === "password"
                                                 ? styles.inputFocused
@@ -91,6 +101,7 @@ export const LoginScreen = ({ onLayout }) => {
                                             setinputName("password");
                                             setIsShowKeyboard(true);
                                         }}
+                                        onBlur={() => setIsShowKeyboard(false)}
                                         onChangeText={(value) =>
                                             setState((prevState) => ({
                                                 ...prevState,
@@ -105,7 +116,10 @@ export const LoginScreen = ({ onLayout }) => {
                                     </Pressable>
                                 </View>
                             </View>
-                            <Pressable style={styles.submitBtn}>
+                            <Pressable
+                                style={styles.submitBtn}
+                                onPress={submitForm}
+                            >
                                 <Text style={styles.submitBtnText}>Увійти</Text>
                             </Pressable>
                             <Pressable>

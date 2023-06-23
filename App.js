@@ -1,3 +1,4 @@
+import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View } from "react-native";
 import { RegistrationScreen } from "./screens/authSreens/RegistrationScreen";
 import { LoginScreen } from "./screens/authSreens/LoginScreen";
@@ -27,6 +28,7 @@ export default function App() {
             <LoginScreen onLayout={onLayoutRootView} />
             {/* <RegistrationScreen onLayout={onLayoutRootView} /> */}
             {/* <PostScreen onLayout={onLayoutRootView} /> */}
+            <StatusBar style="auto" />
         </View>
     );
 }
