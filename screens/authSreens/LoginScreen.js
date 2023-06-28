@@ -1,4 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { useNavigation } from "@react-navigation/native";
+
 import {
     ImageBackground,
     View,
@@ -14,8 +16,8 @@ import BgImage from "../../assets/images/bg-auth.jpg";
 import { styles } from "./RegistrationScreen.styled";
 
 const initialState = {
-    email: "",
-    password: "",
+    email: "cd",
+    password: "fsdfs",
 };
 
 export const LoginScreen = ({ onLayout }) => {
@@ -23,6 +25,7 @@ export const LoginScreen = ({ onLayout }) => {
     const [state, setState] = useState(initialState);
 
     const [isShowKeyboard, setIsShowKeyboard] = useState(false);
+    const navigation = useNavigation();
 
     const keyBordHide = () => {
         setIsShowKeyboard(false);
@@ -34,6 +37,7 @@ export const LoginScreen = ({ onLayout }) => {
             return;
         }
         console.log(state);
+        navigation.navigate("Home");
         setState(initialState);
     };
     return (
@@ -42,13 +46,7 @@ export const LoginScreen = ({ onLayout }) => {
                 behavior={Platform.OS == "ios" ? "padding" : "height"}
                 style={styles.container}
             >
-                <View
-                    style={{
-                        ...styles.container,
-                        marginBottom: isShowKeyboard ? -235 : 0,
-                    }}
-                    onLayout={onLayout}
-                >
+                <View style={styles.container} onLayout={onLayout}>
                     <ImageBackground
                         source={BgImage}
                         style={styles.bgImage}
@@ -122,7 +120,11 @@ export const LoginScreen = ({ onLayout }) => {
                             >
                                 <Text style={styles.submitBtnText}>Увійти</Text>
                             </Pressable>
-                            <Pressable>
+                            <Pressable
+                                onPress={() =>
+                                    navigation.navigate("Registration")
+                                }
+                            >
                                 <Text style={styles.checkBtn}>
                                     Немає акаунту? Зареєструватися
                                 </Text>

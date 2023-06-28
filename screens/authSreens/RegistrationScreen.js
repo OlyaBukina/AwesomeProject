@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useNavigation } from "@react-navigation/native";
+
 import {
     ImageBackground,
     View,
@@ -24,6 +26,7 @@ export const RegistrationScreen = ({ onLayout }) => {
     const [inputName, setinputName] = useState("");
     const [state, setState] = useState(initialState);
     const [isShowKeyboard, setIsShowKeyboard] = useState(false);
+    const navigation = useNavigation();
 
     const keyBordHide = () => {
         setIsShowKeyboard(false);
@@ -35,6 +38,7 @@ export const RegistrationScreen = ({ onLayout }) => {
             return;
         }
         console.log(state);
+        navigation.navigate("Home");
         setState(initialState);
     };
 
@@ -44,13 +48,7 @@ export const RegistrationScreen = ({ onLayout }) => {
                 behavior={Platform.OS == "ios" ? "padding" : "height"}
                 style={styles.container}
             >
-                <View
-                    style={{
-                        ...styles.container,
-                        marginBottom: isShowKeyboard ? -170 : 0,
-                    }}
-                    onLayout={onLayout}
-                >
+                <View style={styles.container} onLayout={onLayout}>
                     <ImageBackground
                         source={BgImage}
                         style={styles.bgImage}
@@ -148,7 +146,9 @@ export const RegistrationScreen = ({ onLayout }) => {
                                     Зареєстуватися
                                 </Text>
                             </Pressable>
-                            <Pressable>
+                            <Pressable
+                                onPress={() => navigation.navigate("Login")}
+                            >
                                 <Text style={styles.checkBtn}>
                                     Вже є акаунт? Увійти
                                 </Text>

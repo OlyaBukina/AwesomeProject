@@ -5,6 +5,7 @@ export const styles = StyleSheet.create({
         flex: 1,
         position: "relative",
         width: "100%",
+        backgroundColor: "#fff",
     },
     header: {
         height: 88,
@@ -12,7 +13,7 @@ export const styles = StyleSheet.create({
         borderBottomColor: "#0000004d",
         width: "100%",
         paddingBottom: 11,
-        display: "flex-block",
+        display: "flex",
         flexDirection: "row",
         justifyContent: "center",
         alignItems: "flex-end",
@@ -43,6 +44,7 @@ export const styles = StyleSheet.create({
         flexDirection: "row",
         alignItems: "center",
         gap: 8,
+        marginBottom: 32,
     },
     infoWrapper: {
         display: "flex",
@@ -68,7 +70,7 @@ export const styles = StyleSheet.create({
         borderTopColor: "#0000004d",
         height: 83,
     },
-    AddPostIcon: {
+    activeTabBtn: {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
@@ -76,5 +78,14 @@ export const styles = StyleSheet.create({
         borderRadius: 20,
         width: 70,
         height: 40,
+    },
+
+    buttonWrapper: {
+        backgroundColor: "#FFF",
+    },
+    postsWrapper: {
+        width: "100%",
+        display: "flex",
+        gap: 32,
     },
 });
