@@ -4,7 +4,7 @@ export const styles = StyleSheet.create({
     container: {
         flex: 1,
         paddingHorizontal: 16,
-        paddingBottom: 32,
+
         paddingTop: 32,
         backgroundColor: "#fff",
     },
@@ -14,7 +14,15 @@ export const styles = StyleSheet.create({
         height: 240,
         marginBottom: 32,
     },
-    commentsWrapper: { flex: 1, gap: 24, marginBottom: 31 },
+    commentsWrapper: {
+        gap: 24,
+        marginBottom: 31,
+        ...Platform.select({
+            ios: {
+                flex: 1,
+            },
+        }),
+    },
     sendCommentWrapper: {
         position: "relative",
     },

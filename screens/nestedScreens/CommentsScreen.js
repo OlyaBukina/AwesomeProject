@@ -36,16 +36,15 @@ export const CommentsScreen = () => {
         <TouchableWithoutFeedback onPress={keyBordHide}>
             <KeyboardAvoidingView
                 behavior={Platform.OS == "ios" ? "padding" : "height"}
-                style={{ flex: 1 }}
+                style={styles.container}
+                keyboardVerticalOffset={60}
             >
-                <View style={styles.container}>
+                <View style={{ flex: 1, paddingBottom: 32 }}>
                     <Image source={postImage} style={styles.postImage}></Image>
                     <View style={styles.commentsWrapper}>
                         <CommentItem />
                         <CommentItem isOwner={true} />
-                        {/* <CommentItem /> */}
                     </View>
-
                     <View style={styles.sendCommentWrapper}>
                         <TextInput
                             style={styles.commentInput}
