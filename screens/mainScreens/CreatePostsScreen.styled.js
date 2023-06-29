@@ -14,19 +14,26 @@ export const styles = StyleSheet.create({
         width: "100%",
         marginBottom: "auto",
     },
+    cameraContainer: { height: 240, width: "100%", borderRadius: 8 },
+    camera: { flex: 1, width: "100%" },
+
     photoWrapper: {
         height: 240,
         width: "100%",
         borderRadius: 8,
-        backgroundColor: "#F6F6F6",
-        borderBottomWidth: 1,
-        borderBottomColor: "#E8E8E8",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
         marginBottom: 8,
     },
-    iconWrapper: {
+    photo: {
+        height: 240,
+        width: "100%",
+        position: "absolute",
+        top: 0,
+        right: 0,
+    },
+    cameraBtn: {
         backgroundColor: "#fff",
         width: 60,
         height: 60,
@@ -83,5 +90,11 @@ export const styles = StyleSheet.create({
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
+
+        ...Platform.select({
+            android: {
+                marginTop: "auto",
+            },
+        }),
     },
 });
