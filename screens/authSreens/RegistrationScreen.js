@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { useNavigation } from "@react-navigation/native";
-import { useDispatch } from "react-redux";
+import { useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
+import { useDispatch } from 'react-redux';
 
 import {
   ImageBackground,
@@ -13,19 +13,21 @@ import {
   Keyboard,
   Platform,
   Alert,
-} from "react-native";
-import { AntDesign } from "@expo/vector-icons";
-import BgImage from "../../assets/images/bg-auth.jpg";
-import { styles } from "./RegistrationScreen.styled";
-import { register } from "../../redux/auth/operations";
+} from 'react-native';
+import { AntDesign } from '@expo/vector-icons';
+import BgImage from '../../assets/images/bg-auth.jpg';
+import { styles } from './RegistrationScreen.styled';
+import { register } from '../../redux/auth/operations';
 
+// eslint-disable-next-line react/prop-types
 export const RegistrationScreen = ({ onLayout }) => {
-  const [inputName, setinputName] = useState("");
-  const [login, setLogin] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [inputName, setinputName] = useState('');
+  const [login, setLogin] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-  const [isShowKeyboard, setIsShowKeyboard] = useState(false);
+  const [, setIsShowKeyboard] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const navigation = useNavigation();
   const dispatch = useDispatch();
@@ -35,24 +37,41 @@ export const RegistrationScreen = ({ onLayout }) => {
     Keyboard.dismiss();
   };
 
+  const resetForm = () => {
+    setLogin('');
+    setEmail('');
+    setPassword('');
+  };
+
   const submitForm = () => {
-    if (login === "" || email === "" || password === "") {
+    if (login === '' || email === '' || password === '') {
       return Alert.alert(
-        "Не коректні дані",
-        "Будь ласка, заповніть всі поля непустими даними"
+        'Не коректні дані',
+        'Будь ласка, заповніть всі поля непустими даними'
       );
     }
-    dispatch(register({ login, email, password }));
-    navigation.navigate("Home");
-    setLogin("");
-    setEmail("");
-    setPassword("");
+    dispatch(register({ login, email, password })).then((res) => {
+      if (res.type === 'auth/register/fulfilled') {
+        navigation.navigate('Home');
+        resetForm();
+      } else {
+        return Alert.alert(
+          'Помилка реєстрації',
+          `Будь ласка, заповніть всі поля коректними даними.`
+        );
+      }
+    });
+  };
+
+  const navToLogin = () => {
+    resetForm();
+    navigation.navigate('Login');
   };
 
   return (
     <TouchableWithoutFeedback onPress={keyBordHide}>
       <KeyboardAvoidingView
-        behavior={Platform.OS == "ios" ? "padding" : "height"}
+        behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
         style={styles.container}
       >
         <View style={styles.container} onLayout={onLayout}>
@@ -72,15 +91,15 @@ export const RegistrationScreen = ({ onLayout }) => {
               <View style={styles.formWrapper}>
                 <TextInput
                   style={
-                    inputName === "login"
+                    inputName === 'login'
                       ? styles.inputFocused
                       : styles.formInput
                   }
                   placeholder="Логін"
-                  placeholderTextColor={"#bdbdbd"}
+                  placeholderTextColor={'#bdbdbd'}
                   value={login}
                   onFocus={() => {
-                    setinputName("login");
+                    setinputName('login');
                     setIsShowKeyboard(true);
                   }}
                   onBlur={() => setIsShowKeyboard(false)}
@@ -89,45 +108,50 @@ export const RegistrationScreen = ({ onLayout }) => {
 
                 <TextInput
                   style={
-                    inputName === "email"
+                    inputName === 'email'
                       ? styles.inputFocused
                       : styles.formInput
                   }
                   placeholder="Адреса електронної пошти"
-                  placeholderTextColor={"#bdbdbd"}
+                  placeholderTextColor={'#bdbdbd'}
                   onFocus={() => {
-                    setinputName("email");
+                    setinputName('email');
                     setIsShowKeyboard(true);
                   }}
                   onBlur={() => setIsShowKeyboard(false)}
                   onChangeText={(value) => setEmail(value)}
                 ></TextInput>
 
-                <View style={{ position: "relative" }}>
+                <View style={{ position: 'relative' }}>
                   <TextInput
                     style={
-                      inputName === "password"
+                      inputName === 'password'
                         ? styles.inputFocused
                         : styles.formInput
                     }
                     placeholder="Пароль"
-                    placeholderTextColor={"#bdbdbd"}
+                    secureTextEntry={!showPassword}
+                    placeholderTextColor={'#bdbdbd'}
                     onFocus={() => {
-                      setinputName("password");
+                      setinputName('password');
                       setIsShowKeyboard(true);
                     }}
                     onBlur={() => setIsShowKeyboard(false)}
                     onChangeText={(value) => setPassword(value)}
                   ></TextInput>
-                  <Pressable>
-                    <Text style={styles.showPasswordBtn}>Показати</Text>
+                  <Pressable
+                    onPress={() => setShowPassword((prevState) => !prevState)}
+                  >
+                    <Text style={styles.showPasswordBtn}>
+                      {!showPassword ? 'Показати' : 'Приховати'}
+                    </Text>
                   </Pressable>
                 </View>
               </View>
               <Pressable style={styles.submitBtn} onPress={submitForm}>
                 <Text style={styles.submitBtnText}>Зареєстуватися</Text>
               </Pressable>
-              <Pressable onPress={() => navigation.navigate("Login")}>
+              <Pressable onPress={navToLogin}>
                 <Text style={styles.checkBtn}>Вже є акаунт? Увійти</Text>
               </Pressable>
             </View>

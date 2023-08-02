@@ -1,38 +1,39 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
-    container: {
-        width: "100%",
-        display: "flex",
-        flexDirection: "row",
-        gap: 16,
-    },
-    avatar: {
-        width: 28,
-        height: 28,
-        borderRadius: 14,
-    },
-    commentWrapper: {
-        flex: 1,
-        display: "flex",
-        gap: 8,
-        borderTopRightRadius: 6,
-        borderBottomLeftRadius: 6,
-        borderBottomRightRadius: 6,
-        backgroundColor: "#00000008",
-        paddingHorizontal: 16,
-        paddingVertical: 16,
-    },
-    commentText: {
-        fontFamily: "Roboto-Regular",
-        fontSize: 13,
-        lineHeight: 18,
-        color: "#212121",
-    },
-    commentDate: {
-        fontFamily: "Roboto-Regular",
-        fontSize: 10,
-        color: "#BDBDBD",
-        textAlign: "right",
-    },
+  avatar: {
+    borderRadius: 14,
+    height: 28,
+    width: 28,
+  },
+  commentDate: {
+    color: '#BDBDBD',
+    fontFamily: 'Roboto-Regular',
+    fontSize: 10,
+    textAlign: 'right',
+  },
+  commentText: {
+    color: '#212121',
+    fontFamily: 'Roboto-Regular',
+    fontSize: 13,
+    lineHeight: 18,
+  },
+  commentWrapper: {
+    backgroundColor: '#00000008',
+    borderBottomLeftRadius: 6,
+    borderBottomRightRadius: 6,
+    borderTopRightRadius: 6,
+    display: 'flex',
+    flex: 1,
+    gap: 8,
+    paddingHorizontal: 16,
+    paddingVertical: 16,
+  },
+  container: {
+    display: 'flex',
+    flexDirection: 'row-reverse',
+    gap: 16,
+    width: '100%',
+    marginBottom: 24,
+  },
 });

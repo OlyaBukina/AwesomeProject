@@ -1,22 +1,22 @@
 // Для роботи із firebase обовʼязково треба ініціалізувати проект
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { initializeApp } from "firebase/app";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { initializeApp } from 'firebase/app';
 // Функція для підключення авторизації в проект
-import { initializeAuth, getReactNativePersistence } from "firebase/auth";
+import { initializeAuth, getReactNativePersistence } from 'firebase/auth';
 // Функція для підключення бази даних у проект
-import { getFirestore } from "firebase/firestore";
+import { getFirestore } from 'firebase/firestore';
 // Функція для підключення сховища файлів в проект
-import { getStorage } from "firebase/storage";
+import { getStorage } from 'firebase/storage';
 
 const firebaseConfig = {
-  databaseURL: "https://my-app-223dc.firebaseio.com",
+  databaseURL: 'https://my-app-223dc.firebaseio.com',
 
-  apiKey: "AIzaSyCOV4DZxH_XJClDWAybavsqWJDyx8C-H5s",
-  authDomain: "my-app-223dc.firebaseapp.com",
-  projectId: "my-app-223dc",
-  storageBucket: "my-app-223dc.appspot.com",
-  messagingSenderId: "458728643693",
-  appId: "1:458728643693:web:6bcbadc2ccfd198f83f364",
+  apiKey: 'AIzaSyCOV4DZxH_XJClDWAybavsqWJDyx8C-H5s',
+  authDomain: 'my-app-223dc.firebaseapp.com',
+  projectId: 'my-app-223dc',
+  storageBucket: 'my-app-223dc.appspot.com',
+  messagingSenderId: '458728643693',
+  appId: '1:458728643693:web:6bcbadc2ccfd198f83f364',
 };
 
 const app = initializeApp(firebaseConfig);

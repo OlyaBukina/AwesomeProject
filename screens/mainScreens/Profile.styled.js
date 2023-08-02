@@ -1,52 +1,53 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
-    bgImage: {
-        flex: 1,
-        justifyContent: "flex-end",
-        paddingTop: 165,
-    },
-    profileContainer: {
-        position: "relative",
-        borderTopLeftRadius: 25,
-        borderTopRightRadius: 25,
-        paddingLeft: 16,
-        paddingRight: 16,
-        paddingBottom: 53,
-        paddingTop: 92,
-        backgroundColor: "#fff",
-        alignItems: "center",
-    },
-    photoWrapper: {
-        width: 120,
-        height: 120,
-        position: "absolute",
-        top: -60,
-    },
-    userAvatar: {
-        borderRadius: 16,
-    },
-    addIcon: {
-        position: "absolute",
-        right: -12.5,
-        top: 81,
+  addIcon: {
+    backgroundColor: '#fff',
+    borderRadius: 12.5,
+    position: 'absolute',
 
-        borderRadius: 12.5,
-        backgroundColor: "#fff",
-    },
-    logOutIcon: { position: "absolute", right: 16, top: 22 },
-    title: {
-        fontFamily: "Roboto-Medium",
-        fontSize: 30,
-        letterSpacing: 0.3,
-        marginBottom: 33,
-    },
-    postsWrapper: {
-        width: "100%",
-        display: "flex",
-        gap: 32,
-    },
+    right: -12.5,
+    top: 81,
+  },
+  bgImage: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    paddingTop: 165,
+  },
+  container: {
+    flex: 1,
+  },
+  logOutIcon: { position: 'absolute', right: 16, top: 22 },
+  photoWrapper: {
+    height: 120,
+    position: 'absolute',
+    top: -60,
+    width: 120,
+  },
+  postsWrapper: {
+    display: 'flex',
+    gap: 32,
+    width: '100%',
+  },
+  profileContainer: {
+    alignItems: 'center',
+    backgroundColor: '#fff',
+    borderTopLeftRadius: 25,
+    borderTopRightRadius: 25,
+    marginTop: 43,
+    // paddingBottom: 53,
+    paddingLeft: 16,
+    paddingRight: 16,
+    paddingTop: 92,
+    position: 'relative',
+  },
+  title: {
+    fontFamily: 'Roboto-Medium',
+    fontSize: 30,
+    letterSpacing: 0.3,
+    marginBottom: 33,
+  },
+  userAvatar: {
+    borderRadius: 16,
+  },
 });

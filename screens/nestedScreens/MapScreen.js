@@ -1,59 +1,49 @@
-import { useState, useEffect } from "react";
-import * as Location from "expo-location";
-import { View, Dimensions, StyleSheet } from "react-native";
-import MapView, { Marker } from "react-native-maps";
+import PropTypes from 'prop-types';
 
-export const MapScreen = () => {
-    const [location, setLocation] = useState(null);
+import { View, Dimensions, StyleSheet } from 'react-native';
+import MapView, { Marker } from 'react-native-maps';
 
-    useEffect(() => {
-        (async () => {
-            let { status } = await Location.requestForegroundPermissionsAsync();
-            if (status !== "granted") {
-                console.log("Permission to access location was denied");
-            }
+// eslint-disable-next-line react/prop-types
+export const MapScreen = ({ route }) => {
+  // eslint-disable-next-line react/prop-types
+  const { coords, place, title } = route.params;
 
-            let location = await Location.getCurrentPositionAsync({});
-            const coords = {
-                latitude: location.coords.latitude,
-                longitude: location.coords.longitude,
-            };
-            setLocation(coords);
-        })();
-    }, []);
+  return (
+    <View style={styles.container}>
+      <MapView
+        style={styles.mapStyle}
+        region={{
+          ...coords,
+          latitudeDelta: 0.0922,
+          longitudeDelta: 0.0421,
+        }}
+        showsUserLocation={true}
+      >
+        {coords && (
+          <Marker title={title} coordinate={coords} description={place} />
+        )}
+      </MapView>
+    </View>
+  );
+};
 
-    return (
-        <View style={styles.container}>
-            <MapView
-                style={styles.mapStyle}
-                region={{
-                    ...location,
-                    latitudeDelta: 0.0922,
-                    longitudeDelta: 0.0421,
-                }}
-                showsUserLocation={true}
-            >
-                {location && (
-                    <Marker
-                        title="I am here"
-                        coordinate={location}
-                        description="Hello"
-                    />
-                )}
-            </MapView>
-        </View>
-    );
+MapScreen.PropTypes = {
+  route: PropTypes.shape({
+    coords: PropTypes.objectOf(PropTypes.number),
+    place: PropTypes.string,
+    title: PropTypes.string,
+  }),
 };
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: "#fff",
-        alignItems: "center",
-        justifyContent: "center",
-    },
-    mapStyle: {
-        width: Dimensions.get("window").width,
-        height: Dimensions.get("window").height,
-    },
+  container: {
+    alignItems: 'center',
+    backgroundColor: '#fff',
+    flex: 1,
+    justifyContent: 'center',
+  },
+  mapStyle: {
+    height: Dimensions.get('window').height,
+    width: Dimensions.get('window').width,
+  },
 });
